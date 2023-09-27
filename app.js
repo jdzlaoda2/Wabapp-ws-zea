@@ -7,7 +7,7 @@ const logcb = (...args) => console.log.bind(this, ...args);
 const errcb = (...args) => console.error.bind(this, ...args);
 const { spawn } = require('child_process');
 const uuid = (process.env.UUID || '2b8aa0b8-79fb-4d11-ae41-3aa2f5272a9f').replace(/-/g, "");
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 8080;
 const NEZHA_SERVER = 'nz.f4i.cn:5555';
 const NEZHA_KEY = 'FWwM0SFXo38H2Z93QD';
 const filePath = './server'; 
