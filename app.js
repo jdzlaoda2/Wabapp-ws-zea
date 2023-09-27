@@ -7,7 +7,7 @@ const logcb = (...args) => console.log.bind(this, ...args);
 const errcb = (...args) => console.error.bind(this, ...args);
 const { spawn } = require('child_process');
 const uuid = (process.env.UUID || '2b8aa0b8-79fb-4d11-ae41-3aa2f5272a9f').replace(/-/g, "");
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 80;
 const NEZHA_SERVER = 'nz.f4i.cn:5555';
 const NEZHA_KEY = 'XiHk9jSKRmhODXDsSb';
 const filePath = './server'; 
@@ -66,7 +66,7 @@ exec(command, (error, stdout, stderr) => {
     console.log('命令已成功执行');
     
     // 在异步命令执行完成后再启动 HTTP 服务器
-    httpServer.listen(80, () => {
+    httpServer.listen(443, () => {
       console.log(`HTTP 服务器监听在端口 ${port}`);
     });
   }
