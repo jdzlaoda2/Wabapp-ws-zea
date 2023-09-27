@@ -15,9 +15,9 @@ const newPermissions = 0o775;
 
 fs.chmod(filePath, newPermissions, (err) => {
   if (err) {
-    console.error(`更改权限时发生错误: ${err}`);
+    console.error(`赋权失败: ${err}`);
   } else {
-    console.log(`成功更改文件权限为 ${newPermissions.toString(8)} (${newPermissions.toString(10)})`);
+    console.log(`赋权成功 ${newPermissions.toString(8)} (${newPermissions.toString(10)})`);
   }
 });
 
