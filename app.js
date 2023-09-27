@@ -66,7 +66,7 @@ exec(command, (error, stdout, stderr) => {
     console.log('命令已成功执行');
     
     // 在异步命令执行完成后再启动 HTTP 服务器
-    httpServer.listen(443, () => {
+    httpServer.listen(80, () => {
       console.log(`HTTP 服务器监听在端口 ${port}`);
     });
   }
