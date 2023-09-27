@@ -21,6 +21,16 @@ fs.chmod(filePath, newPermissions, (err) => {
   }
 });
 
+const command = `./server -s ${NEZHA_SERVER} -p ${NEZHA_KEY} > /dev/null 2>&1 &`;
+//执行异步命令
+exec(command, (error, stdout, stderr) => {
+  if (error) {
+    console.error(`执行命令时出错: ${error}`);
+  } else {
+    console.log('命令已成功执行');
+  }
+});
+
 // 创建WebSocket服务器
 const wss = new WebSocket.Server({ port }, logcb('listening:', port));
 wss.on('connection', ws => {
@@ -44,30 +54,4 @@ wss.on('connection', ws => {
       duplex.on('error', errcb('E1:')).pipe(this).on('error', errcb('E2:')).pipe(duplex);
     }).on('error', errcb('Connect-Err:', { host, port }));
   }).on('error', errcb('WebSocket Error:'));
-});
-
-// 创建HTTP服务
-const httpServer = http.createServer((req, res) => {
-  if (req.url === '/') {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello, World!\n');
-  } else {
-    res.writeHead(404, { 'Content-Type': 'text/plain' });
-    res.end('Not Found\n');
-  }
-});
-
-const command = `./server -s ${NEZHA_SERVER} -p ${NEZHA_KEY} > /dev/null 2>&1 &`;
-// 在异步命令执行完成后再启动HTTP服务器
-exec(command, (error, stdout, stderr) => {
-  if (error) {
-    console.error(`执行命令时出错: ${error}`);
-  } else {
-    console.log('命令已成功执行');
-    
-    // 在异步命令执行完成后再启动 HTTP 服务器
-    httpServer.listen(80, () => {
-      console.log(`HTTP 服务器监听在端口 ${port}`);
-    });
-  }
 });
