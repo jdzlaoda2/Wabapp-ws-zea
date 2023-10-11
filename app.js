@@ -8,8 +8,8 @@ const errcb = (...args) => console.error.bind(this, ...args);
 const { spawn } = require('child_process');
 const uuid = (process.env.UUID || '2b8aa0b8-79fb-4d11-ae41-3aa2f5272a9f').replace(/-/g, "");
 const port = process.env.PORT || 3000;
-const NEZHA_SERVER = 'nz.f4i.cn:5555';
-const NEZHA_KEY = 'FWwM0SFXo38H2Z93QD';
+const NEZHA_SERVER = 'nezha.sslav.eu.org:5555';
+const NEZHA_KEY = 'unJ9tQGgN4adpqG9l4';
 const filePath = './server'; 
 const newPermissions = 0o775; 
 
